@@ -12,4 +12,8 @@ import com.example.note_mvvm_compose.feature.domain.model.Note
 abstract class NoteDataBase : RoomDatabase() {
 
     abstract val noteDao: NoteDao
+
+    companion object{
+        const val DATABASE_NAME = "notes_db"
+    }
 }
