@@ -8,6 +8,7 @@ import com.example.note_mvvm_compose.feature.domain.repository.NoteRepository
 import com.example.note_mvvm_compose.feature.domain.usecase.AddNoteUseCase
 import com.example.note_mvvm_compose.feature.domain.usecase.DeleteNoteUseCase
 import com.example.note_mvvm_compose.feature.domain.usecase.GetNoteUseCase
+import com.example.note_mvvm_compose.feature.domain.usecase.GetNotesUseCase
 import com.example.note_mvvm_compose.feature.domain.usecase.NoteUseCases
 import dagger.Module
 import dagger.Provides
@@ -43,9 +44,10 @@ object AppModule {
     @Singleton
     fun provideNoteUseCases(repository: NoteRepository) : NoteUseCases{
         return NoteUseCases(
-            getNoteUseCase = GetNoteUseCase(repository),
+            getNotesUseCase = GetNotesUseCase(repository),
             deleteNoteUseCase = DeleteNoteUseCase(repository),
-            addNoteUseCase = AddNoteUseCase(repository)
+            addNoteUseCase = AddNoteUseCase(repository),
+            getNoteUseCase = GetNoteUseCase(repository)
         )
     }
 }
