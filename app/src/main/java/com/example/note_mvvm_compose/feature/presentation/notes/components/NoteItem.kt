@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -23,16 +22,12 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.drawscope.clipPath
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
 import androidx.core.graphics.ColorUtils
-import androidx.room.PrimaryKey
 import com.example.note_mvvm_compose.feature.domain.model.Note
-import com.example.note_mvvm_compose.feature.domain.util.NoteOrder
 
 @Composable
 fun NoteItem(
@@ -81,6 +76,7 @@ fun NoteItem(
                 .fillMaxSize()
                 .padding(16.dp)
                 .padding(end = 32.dp)
+                .align(alignment = Alignment.BottomEnd)
         ) {
             Text(
                 text = note.title,
@@ -99,7 +95,8 @@ fun NoteItem(
             )
             IconButton(
                 onClick = onDeleteClick,
-                modifier = Modifier.align(alignment = Alignment.BottomEnd)
+                modifier = Modifier
+//                modifier = Modifier.align(alignment = Alignment.BottomEnd)
             ) {
                 Icon(
                     imageVector = Icons.Default.Delete,
@@ -110,19 +107,19 @@ fun NoteItem(
     }
 }
 
-@Preview(name = "PreviewNoteItem")
-@Composable
-fun PreviewNoteItem() {
-    val note = Note(
-        title = "Sample Note Title",
-        content = "This is a sample note content.",
-        timestamp = System.currentTimeMillis(), // 현재 시간
-        color = 0x111111,
-        id = 1
-    )
-
-    NoteItem(
-        note = note,
-        onDeleteClick = { }
-    )
-}
+//@Preview(name = "PreviewNoteItem")
+//@Composable
+//fun PreviewNoteItem() {
+//    val note = Note(
+//        title = "Sample Note Title",
+//        content = "This is a sample note content.",
+//        timestamp = System.currentTimeMillis(), // 현재 시간
+//        color = 0x111111,
+//        id = 1
+//    )
+//
+//    NoteItem(
+//        note = note,
+//        onDeleteClick = { }
+//    )
+//}
