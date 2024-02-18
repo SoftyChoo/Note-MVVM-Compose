@@ -8,7 +8,7 @@ import com.example.note_mvvm_compose.feature.domain.util.OrderType
 // viewModel에서 직접 사용할 데이터
 
 data class NoteState(
-    val notes: List<Note> = emptyList(),
-    val noteOrder: NoteOrder = NoteOrder.Date(OrderType.Descending),
-    val isOrderSectionVisible: Boolean = false
+    val notes: List<Note> = emptyList(), // 노트 리스트
+    val noteOrder: NoteOrder = NoteOrder.Date(OrderType.Descending), // 노트의 정렬 상태
+    val isOrderSectionVisible: Boolean = false // 상단 정렬 섹션 visible 상태
 )
