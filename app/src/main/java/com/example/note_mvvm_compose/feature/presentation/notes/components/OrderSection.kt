@@ -68,8 +68,8 @@ fun OrderSection(
 }
 
 
-@Preview(name = "PreviewOrderSection")
-@Composable
-fun PreviewOrderSection() {
-    OrderSection { }
-}
+//@Preview(name = "PreviewOrderSection")
+//@Composable
+//fun PreviewOrderSection() {
+//    OrderSection { }
+//}

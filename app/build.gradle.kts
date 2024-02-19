@@ -6,7 +6,7 @@ plugins {
     id("kotlin-android")
     id("kotlin-kapt")
     id("com.google.devtools.ksp")
-//    id ("dagger.hilt.android.plugin")
+    id("dagger.hilt.android.plugin") // test
 }
 
 android {
@@ -59,6 +59,14 @@ android {
 }
 
 dependencies {
+    // test
+    implementation("com.google.dagger:hilt-android:2.44")
+    kapt("com.google.dagger:hilt-android-compiler:2.44")
+    implementation("androidx.hilt:hilt-work:1.0.0")
+    kapt("androidx.hilt:hilt-compiler:1.0.0")
+    implementation("androidx.work:work-runtime-ktx:2.8.1")
+    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
+    //test
 
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
@@ -80,15 +88,16 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.0-alpha01")
     implementation("androidx.navigation:navigation-compose:2.8.0-alpha02")
     implementation("androidx.compose.material:material-icons-extended:1.6.1")
-    implementation("androidx.hilt:hilt-navigation-compose:1.2.0-rc01")
+//    implementation("androidx.hilt:hilt-navigation-compose:1.2.0-rc01") //test
 
     // Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
 
     //Dagger - Hilt
-    implementation("com.google.dagger:hilt-android:2.49")
-    implementation("androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03")
+//    implementation("com.google.dagger:hilt-android:2.49") //test
+
+//    implementation("androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03") //제거
 
 //    annotationProcessor("androidx.hilt:hilt-compiler:1.1.0")
 //    annotationProcessor("com.google.dagger:hilt-android-compiler:2.48.1")
@@ -96,8 +105,7 @@ dependencies {
 
     // Room
     implementation("androidx.room:room-runtime:2.6.1")
-
-//    annotationProcessor("androidx.room:room-compiler:2.6.1")
+    kapt("androidx.room:room-compiler:2.6.1")
 
     // Kotlin Extensions and Coroutines support for Room
     implementation("androidx.room:room-ktx:2.6.1")

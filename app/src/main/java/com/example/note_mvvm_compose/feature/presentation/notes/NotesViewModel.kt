@@ -72,7 +72,7 @@ class NotesViewModel @Inject constructor(
         // getNotes함수를 호출할 때 마다 이전 코루틴을 취소
         // -> 코루틴 중복 실행 및 메모리 누수를 방지
         getNotesJob?.cancel()
-        getNotesJob = noteUseCases.getNoteUseCase(noteOrder)
+        getNotesJob = noteUseCases.getNotesUseCase(noteOrder)
             .map { notes ->
                 NoteState(
                     notes = notes,

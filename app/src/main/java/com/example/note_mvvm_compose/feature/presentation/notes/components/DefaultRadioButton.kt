@@ -1,5 +1,4 @@
 package com.example.note_mvvm_compose.feature.presentation.notes.components
-
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.width
@@ -41,9 +40,9 @@ fun DefaultRadioButton(
     }
 }
 
-@Preview(name = "DefaultRadioButton")
-@Composable
-fun PreviewDefaultRadioButton() {
-    val buttonState = rememberSaveable { true }
-    DefaultRadioButton(text = "testText", checked = buttonState, onSelect = { /*TODO*/ })
-}
+//@Preview(name = "DefaultRadioButton")
+//@Composable
+//fun PreviewDefaultRadioButton() {
+//    val buttonState = rememberSaveable { true }
+//    DefaultRadioButton(text = "testText", checked = buttonState, onSelect = { /*TODO*/ })
+//}
