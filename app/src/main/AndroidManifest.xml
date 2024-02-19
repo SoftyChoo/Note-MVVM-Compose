@@ -4,7 +4,6 @@
     package="com.example.note_mvvm_compose">
 
     <application
-        android:name=".NoteApp"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
