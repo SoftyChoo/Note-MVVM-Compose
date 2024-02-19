@@ -1,5 +1,4 @@
 package com.example.note_mvvm_compose.feature.presentation.notes.components
-
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.width

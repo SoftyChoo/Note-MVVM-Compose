@@ -1,5 +1,3 @@
-@file:OptIn(ExperimentalMaterial3Api::class)
-
 package com.example.note_mvvm_compose.feature.presentation.add_edit_note
 
 import android.annotation.SuppressLint
@@ -46,7 +44,6 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.note_mvvm_compose.feature.domain.model.Note
 import com.example.note_mvvm_compose.feature.presentation.add_edit_note.components.TransparentHintTextField
-import com.example.note_mvvm_compose.feature.presentation.notes.NotesScreen
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
