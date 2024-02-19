@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Note-MVVM-Compose</string>
+
+
+<!--  RadioButton  -->
+    <string name="btn_text_title">Title</string>
+    <string name="btn_text_date">DATE</string>
+    <string name="btn_text_color">Color</string>
+
+
 </resources>

@@ -6,7 +6,7 @@ plugins {
     id("kotlin-android")
     id("kotlin-kapt")
     id("com.google.devtools.ksp")
-//    id ("dagger.hilt.android.plugin")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -60,7 +60,7 @@ android {
 
 dependencies {
 
-    implementation("androidx.core:core-ktx:1.9.0")
+    implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
     implementation("androidx.activity:activity-compose:1.8.2")
     implementation(platform("androidx.compose:compose-bom:2023.03.00"))
@@ -90,14 +90,14 @@ dependencies {
     implementation("com.google.dagger:hilt-android:2.49")
     implementation("androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03")
 
-//    annotationProcessor("androidx.hilt:hilt-compiler:1.1.0")
-//    annotationProcessor("com.google.dagger:hilt-android-compiler:2.48.1")
+    annotationProcessor("androidx.hilt:hilt-compiler:1.1.0")
+    annotationProcessor("com.google.dagger:hilt-android-compiler:2.48.1")
 
 
     // Room
     implementation("androidx.room:room-runtime:2.6.1")
 
-//    annotationProcessor("androidx.room:room-compiler:2.6.1")
+    annotationProcessor("androidx.room:room-compiler:2.6.1")
 
     // Kotlin Extensions and Coroutines support for Room
     implementation("androidx.room:room-ktx:2.6.1")

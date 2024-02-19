@@ -8,6 +8,7 @@ import com.example.note_mvvm_compose.feature.domain.repository.NoteRepository
 import com.example.note_mvvm_compose.feature.domain.usecase.AddNoteUseCase
 import com.example.note_mvvm_compose.feature.domain.usecase.DeleteNoteUseCase
 import com.example.note_mvvm_compose.feature.domain.usecase.GetNoteUseCase
+import com.example.note_mvvm_compose.feature.domain.usecase.GetNotesUseCase
 import com.example.note_mvvm_compose.feature.domain.usecase.NoteUseCases
 import dagger.Module
 import dagger.Provides
@@ -18,7 +19,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
-
 
     // 어플리케이션 전체에서 사용할 NoteDB의 인스턴스 제공
     @Provides
@@ -43,9 +43,10 @@ object AppModule {
     @Singleton
     fun provideNoteUseCases(repository: NoteRepository) : NoteUseCases{
         return NoteUseCases(
-            getNoteUseCase = GetNoteUseCase(repository),
+            getNotesUseCase = GetNotesUseCase(repository),
             deleteNoteUseCase = DeleteNoteUseCase(repository),
-            addNoteUseCase = AddNoteUseCase(repository)
+            addNoteUseCase = AddNoteUseCase(repository),
+            getNoteUseCase = GetNoteUseCase(repository)
         )
     }
 }

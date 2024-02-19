@@ -1,4 +1,4 @@
-package com.example.note_mvvm_compose.theme
+package com.example.note_mvvm_compose.ui.theme
 
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
