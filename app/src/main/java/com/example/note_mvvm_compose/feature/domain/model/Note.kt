@@ -2,11 +2,11 @@ package com.example.note_mvvm_compose.feature.domain.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.note_mvvm_compose.ui.theme.BabyBlue
-import com.example.note_mvvm_compose.ui.theme.LightGreen
-import com.example.note_mvvm_compose.ui.theme.RedOrange
-import com.example.note_mvvm_compose.ui.theme.RedPink
-import com.example.note_mvvm_compose.ui.theme.Violet
+import com.example.note_mvvm_compose.theme.BabyBlue
+import com.example.note_mvvm_compose.theme.LightGreen
+import com.example.note_mvvm_compose.theme.RedOrange
+import com.example.note_mvvm_compose.theme.RedPink
+import com.example.note_mvvm_compose.theme.Violet
 
 // note 정보를 다룰 data Class
 @Entity
