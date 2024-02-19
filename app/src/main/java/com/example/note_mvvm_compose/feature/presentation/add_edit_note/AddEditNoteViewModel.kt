@@ -119,4 +119,3 @@ class AddEditNoteViewModel @Inject constructor(
         object SaveNote : UiEvent() // 저장 버튼 클릭
     }
 }
-

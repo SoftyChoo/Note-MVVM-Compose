@@ -2,7 +2,6 @@ package com.example.note_mvvm_compose.feature.presentation.add_edit_note
 
 import androidx.compose.ui.focus.FocusState
 
-
 /*
 FocusState interface
 Inactive: 포커스를 가지고 있지 않은 비활성 상태
