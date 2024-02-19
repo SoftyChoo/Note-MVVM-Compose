@@ -20,7 +20,6 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object AppModule {
 
-
     // 어플리케이션 전체에서 사용할 NoteDB의 인스턴스 제공
     @Provides
     @Singleton
