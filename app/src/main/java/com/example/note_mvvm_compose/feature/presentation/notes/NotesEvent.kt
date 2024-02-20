@@ -8,5 +8,5 @@ sealed class NotesEvent {
     data class Order(val noteOrder: NoteOrder) : NotesEvent()
     data class DeleteNote(val note: Note) : NotesEvent()
     object RestoreNote: NotesEvent() // 복원
-    object ToggleOrderSection: NotesEvent()
+    object ToggleOrderSection: NotesEvent() // 정렬 섹션 토글
 }
