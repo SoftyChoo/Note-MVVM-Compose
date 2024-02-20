@@ -74,14 +74,15 @@ fun AddEditNoteScreen(
     // LaunchedEffect : 컴포지션이 일어날 때 suspend fun을 실행시켜주는 Composable
     // 매번 리컴포지션이 일어날 때 마다 LaunchedEffect가 재수행 된다면 비효율적이기 때문에
     // LaunchedEffect는 기준값(key)을 두어 key가 바뀔 때만 LaunchedEffect의 suspend fun을 취소하고 재실행한다.
-    LaunchedEffect(key1 = true){
+    LaunchedEffect(key1 = true) {
         viewModel.eventFlow.collectLatest { event ->
-            when(event){
+            when (event) {
                 is AddEditNoteViewModel.UiEvent.ShowSnackBar -> { // 스낵바
                     snackbarHostState.showSnackbar(
                         message = event.message
                     )
                 }
+
                 is AddEditNoteViewModel.UiEvent.SaveNote -> { // 저장일 경우 저장 후 이전 화면으로 이동
                     navController.navigateUp()
                 }
@@ -95,7 +96,8 @@ fun AddEditNoteScreen(
                 onClick = {
                     viewModel.onEvent(AddEditNoteEvent.SaveNote)
                 },
-                containerColor = MaterialTheme.colorScheme.primary // background color
+                containerColor = MaterialTheme.colorScheme.primary, // background color
+                shape = CircleShape
             ) {
                 Icon(imageVector = Icons.Default.Save, contentDescription = "Save Note")
             }
@@ -162,7 +164,7 @@ fun AddEditNoteScreen(
                 },
                 isHintVisible = titleState.isHintVisible, // 바꿔진 값을 가져와서 띄운다.
                 singleLine = true,
-                textStyle = MaterialTheme.typography.titleMedium
+                textStyle = MaterialTheme.typography.titleLarge
 
             )
             Spacer(modifier = Modifier.height(16.dp))
@@ -177,8 +179,7 @@ fun AddEditNoteScreen(
                     viewModel.onEvent(AddEditNoteEvent.ChangeContentFocus(it))
                 },
                 isHintVisible = contentState.isHintVisible, // 바꿔진 값을 가져와서 띄운다.
-                singleLine = true,
-                textStyle = MaterialTheme.typography.bodySmall
+                textStyle = MaterialTheme.typography.bodyLarge
             )
         }
     }
