@@ -25,7 +25,7 @@ class AddEditNoteViewModel @Inject constructor(
     private val _noteTitle = mutableStateOf(NoteTextFieldState(hint = "Enter the title"))
     val noteTitle: State<NoteTextFieldState> get() = _noteTitle
 
-    private val _noteContent = mutableStateOf(NoteTextFieldState(text = "Enter the content"))
+    private val _noteContent = mutableStateOf(NoteTextFieldState(hint = "Enter the content"))
     val noteContent: State<NoteTextFieldState> get() = _noteContent
 
     private val _noteColor = mutableStateOf(Note.noteColors.random().toArgb()) // toArgb : int 반환
@@ -39,9 +39,9 @@ class AddEditNoteViewModel @Inject constructor(
 
     init {
         savedStateHandle.get<Int>("noteId")?.let { noteId -> // noteId 가져오기
-            if(noteId != -1){ // Id 가 유효할 경우
+            if (noteId != -1) { // Id 가 유효할 경우
                 viewModelScope.launch {
-                    noteUseCases.getNoteUseCase(noteId)?.also {note -> // id에 맞는 노트의 정보를 가져온다.
+                    noteUseCases.getNoteUseCase(noteId)?.also { note -> // id에 맞는 노트의 정보를 가져온다.
                         currentNoteId = note.id
                         _noteTitle.value = noteTitle.value.copy(
                             text = note.title,
@@ -68,19 +68,21 @@ class AddEditNoteViewModel @Inject constructor(
 
             is AddEditNoteEvent.ChangeTitleFocus -> {
                 _noteTitle.value = noteTitle.value.copy(
-                    isHintVisible = !event.focusState.isFocused && noteTitle.value.text.isBlank() // Focus, 내용 X 일때만 힌트 보이게
+                    isHintVisible = !event.focusState.isFocused &&
+                            noteTitle.value.text.isBlank()
                 )
             }
 
             is AddEditNoteEvent.EnteredContent -> {
-                _noteContent.value = noteContent.value.copy(
+                _noteContent.value = _noteContent.value.copy(
                     text = event.value
                 )
             }
 
             is AddEditNoteEvent.ChangeContentFocus -> {
-                _noteContent.value = noteContent.value.copy(
-                    isHintVisible = !event.focusState.isFocused && noteContent.value.text.isBlank() // Focus, 내용 X 일때만 힌트 보이게
+                _noteContent.value = _noteContent.value.copy(
+                    isHintVisible = !event.focusState.isFocused &&
+                            _noteContent.value.text.isBlank()
                 )
             }
 
