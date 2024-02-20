@@ -7,6 +7,7 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -18,11 +19,15 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Sort
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.FloatingActionButtonDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
@@ -41,6 +46,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.note_mvvm_compose.feature.presentation.notes.components.NoteItem
 import com.example.note_mvvm_compose.feature.presentation.notes.components.OrderSection
+import com.example.note_mvvm_compose.feature.presentation.util.Screen
 import kotlinx.coroutines.launch
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -58,8 +64,10 @@ fun NotesScreen(
         floatingActionButton = { // 노트 추가용 FAB
             FloatingActionButton(
                 onClick = {
-                    viewModel.onEvent(NotesEvent.ToggleOrderSection)
-                }
+                    navController.navigate(Screen.AddEditNoteScreen.route) // Add,EditNoteScreen으로 이동
+                },
+                containerColor = MaterialTheme.colorScheme.primary,
+                shape = CircleShape
             ) {
                 Icon(imageVector = Icons.Default.Add, contentDescription = "Add note")
             }
@@ -77,14 +85,24 @@ fun NotesScreen(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = "MinSu Note",
+                    text = "Your Note",
                     style = MaterialTheme.typography.headlineMedium
                 )
+                IconButton(
+                    onClick = {
+                        viewModel.onEvent(NotesEvent.ToggleOrderSection)
+                    },
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.Sort,
+                        contentDescription = "Sort"
+                    )
+                }
             }
             AnimatedVisibility(
                 visible = state.isOrderSectionVisible,
-                enter = fadeIn() + slideInVertically(),
-                exit = fadeOut() + slideOutVertically()
+                enter = fadeIn() + slideInVertically(), // 나올때 fadeIn + 세로 slide
+                exit = fadeOut() + slideOutVertically() // 들어갈 떄 fadeOut + 세로 slide
             ) {
                 OrderSection(
                     modifier = Modifier
@@ -106,7 +124,9 @@ fun NotesScreen(
                         modifier = Modifier
                             .fillMaxWidth()
                             .clickable { // 노트 클릭 시 동작
-
+                                navController.navigate(
+                                    Screen.AddEditNoteScreen.route + "?noteId=${note.id}&noteColor=${note.color}"
+                                )
                             },
                         onDeleteClick = {
                             viewModel.onEvent(NotesEvent.DeleteNote(note)) // 삭제
@@ -115,7 +135,7 @@ fun NotesScreen(
                                     message = "Note Deleted",
                                     actionLabel = "Undo"
                                 )
-                                if(result == SnackbarResult.ActionPerformed){ // Undo를 선택한 경우 삭제된 아이템 복구
+                                if (result == SnackbarResult.ActionPerformed) { // Undo를 선택한 경우 삭제된 아이템 복구
                                     viewModel.onEvent(NotesEvent.RestoreNote)
                                 }
                             }
