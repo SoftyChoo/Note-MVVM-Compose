@@ -76,7 +76,6 @@ fun NoteItem(
                 .fillMaxSize()
                 .padding(16.dp)
                 .padding(end = 32.dp)
-                .align(alignment = Alignment.BottomEnd)
         ) {
             Text(
                 text = note.title,
@@ -93,16 +92,16 @@ fun NoteItem(
                 maxLines = 10,
                 overflow = TextOverflow.Ellipsis
             )
-            IconButton(
-                onClick = onDeleteClick,
-                modifier = Modifier
-//                modifier = Modifier.align(alignment = Alignment.BottomEnd)
-            ) {
-                Icon(
-                    imageVector = Icons.Default.Delete,
-                    contentDescription = "Delete Note"
-                )
-            }
+        }
+        IconButton(
+            onClick = onDeleteClick,
+            modifier = Modifier.align(Alignment.BottomEnd)
+        ) {
+            Icon(
+                imageVector = Icons.Default.Delete,
+                contentDescription = "Delete Note",
+                tint = MaterialTheme.colorScheme.onSurface
+            )
         }
     }
 }
