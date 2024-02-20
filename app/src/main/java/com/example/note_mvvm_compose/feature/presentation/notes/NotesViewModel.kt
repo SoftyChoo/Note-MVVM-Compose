@@ -26,7 +26,7 @@ class NotesViewModel @Inject constructor(
 
     private var recentlyDeleteNote: Note? = null // 복구용
 
-    private var getNotesJob : Job? = null
+    private var getNotesJob: Job? = null
 
     init {
         getNotes(NoteOrder.Date(OrderType.Descending))
@@ -36,7 +36,8 @@ class NotesViewModel @Inject constructor(
         when (event) {
             is NotesEvent.Order -> {
                 if (state.value.noteOrder::class == event.noteOrder::class &&
-                    state.value.noteOrder.orderType == event.noteOrder.orderType){
+                    state.value.noteOrder.orderType == event.noteOrder.orderType
+                ) {
                     return
                 }
                 getNotes(event.noteOrder)
@@ -59,16 +60,14 @@ class NotesViewModel @Inject constructor(
             }
 
             is NotesEvent.ToggleOrderSection -> {
-                _state.value.copy(
+                _state.value = state.value.copy(
                     isOrderSectionVisible = !state.value.isOrderSectionVisible
                 )
             }
-
-            else -> { Unit }
         }
     }
 
-    private fun getNotes(noteOrder: NoteOrder){
+    private fun getNotes(noteOrder: NoteOrder) {
         // 정렬을 기반으로 목록을 가져와서 상태 업데이트
 
         // getNotes함수를 호출할 때 마다 이전 코루틴을 취소
@@ -83,8 +82,8 @@ class NotesViewModel @Inject constructor(
             }.onEach { newNoteState ->
                 _state.value = newNoteState
             }.launchIn(viewModelScope)
-            // launchIn(viewModelScope)
-            // 뷰 모델의 수명 주기와 일치시킴
-            // 뷰 모델이 파괴될 때 해당 코루틴이 취소되도록 하여 메모리 누수나 예기치 않은 동작을 방지한다고 함
+        // launchIn(viewModelScope)
+        // 뷰 모델의 수명 주기와 일치시킴
+        // 뷰 모델이 파괴될 때 해당 코루틴이 취소되도록 하여 메모리 누수나 예기치 않은 동작을 방지한다고 함
     }
 }
